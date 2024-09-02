@@ -1,0 +1,246 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --myfont: "Mulish", sans-serif;
+    --my-btn-font: "Montserrat", sans-serif;
+    --lg-lightcolor: linear-gradient(to left, rgba(116, 235, 213, 0.6), rgba(159, 172, 230, 0));
+    --lg-color: linear-gradient(to left, #21005e, #21005e);
+}
+
+body {
+    background: var(--lg-color);
+    font-family: var(--myfont);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100vw;
+}
+
+.container {
+    background: hsl(0 0% 100%);
+    border-radius: 10px;
+    box-shadow:
+        0 0 0.25rem hsl(0 0% 0%),
+        0 0 0.25rem hsl(0 0% 0%),
+        0 0 0.25rem hsl(0 0% 0%),
+        0 0 0.25rem hsl(0 0% 0%),
+        0 0 0.25rem hsl(0 0% 0%);
+    overflow: hidden;
+    width: calc(100vw - 65vw);
+    max-width: 100%;
+}
+
+.header {
+    background-color: hsl(0 0% 100%);
+    width: 100%;
+    height: 5rem;
+    border-bottom: 1px solid hsl(0 0% 50%);
+    position: relative;
+    overflow: hidden;
+    transition: width 1.5s ease-in-out;
+    cursor: pointer;
+}
+
+.header h2 {
+    color: hsl(0 0% 0%);
+    font-family: var(--my-btn-font);
+    font-size: 2rem;
+    letter-spacing: 0.15rem;
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 1.5s ease;
+}
+
+.header h2::before {
+    content: '';
+    position: absolute;
+    bottom: -0.4rem;
+    left: 0;
+    transform: translate(-50%, -50%);
+    transform-origin: right;
+    width: 0;
+    height: 3px;
+    background-color: hsl(0, 0%, 0%);
+    border-radius: 5px;
+    transition: width 1.5s ease-in-out;
+    animation: draw-line 4s ease-in-out 3s forwards;
+}
+
+@keyframes draw-line {
+    0% {
+        width: 0%;
+        left: 0;
+    }
+
+    100% {
+        width: 61%;
+        left: 50%;
+    }
+}
+
+.header h2::after {
+    content: 'Hello Frontend Friends!';
+    position: absolute;
+    top: 50%;
+    left: -19.75rem;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: hsl(0 0% 0%);
+    color: hsl(0 0% 100%);
+    width: 27rem;
+    height: 3rem;
+    border-radius: 5px;
+    font-size: 1.25rem;
+    font-weight: bold;
+    white-space: nowrap;
+    transition: all 1.5s ease;
+    animation: slide 10s linear 1s alternate;
+}
+
+@keyframes slide {
+    100% {
+        left: 53rem;
+    }
+}
+
+.form {
+    padding: 40px;
+}
+
+.form-control {
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.form-control label {
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.form-control input {
+    width: 100%;
+    border: 1px solid hsl(0 0% 50%);
+    border-radius: 5px;
+    display: block;
+    font-family: var(--myfont);
+    font-size: 14px;
+    padding: 12px;
+    transition: all 0.4s ease;
+}
+
+.form-control input:hover {
+    box-shadow: 0 0 5px 3px hsl(0 0% 80%);
+    transform: scale(1.02);
+}
+
+.form-control input:focus {
+    outline: 0;
+    border-color: #777;
+}
+
+.form-control.success input {
+    border-color: #2ecc71;
+}
+
+.form-control.error input {
+    border-color: #e74e3c;
+}
+
+.form-control i {
+    position: absolute;
+    right: 12px;
+    top: 38px;
+    visibility: hidden;
+}
+
+.form-control.success i.bi-check-circle-fill {
+    color: #2ecc71;
+    visibility: visible;
+}
+
+#toggle {
+    position: absolute;
+    top: 46%;
+    right: 1px;
+    transform: translate(-50%);
+    width: 24px;
+    height: 24px;
+    background: url(eye.svg);
+    background-size: cover;
+    cursor: pointer;
+}
+
+#toggle.hide {
+    background: url(eye-slash.svg);
+    background-size: cover;
+}
+
+#toggle2 {
+    position: absolute;
+    top: 46%;
+    right: 1px;
+    transform: translate(-50%);
+    width: 25px;
+    height: 25px;
+    background: url(eye.svg);
+    background-size: cover;
+    cursor: pointer;
+}
+
+#toggle2.hide {
+    background: url(eye-slash.svg);
+    background-size: cover;
+}
+
+.form-control.error i.bi-exclamation-circle-fill {
+    color: #e74e3c;
+    visibility: visible;
+}
+
+.form-control small {
+    color: #e74e3c;
+    position: absolute;
+    left: 0;
+    visibility: hidden;
+}
+
+.form-control.error small {
+    visibility: visible;
+}
+
+.form .btn {
+    background-color: hsl(0 0% 0%);
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    color: hsl(0 0% 100%);
+    display: block;
+    font-family: var(--my-btn-font);
+    font-size: 1.15rem;
+    letter-spacing: 0.1rem;
+    padding: 15px 0;
+    margin-top: 20px;
+    width: 100%;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 1.5s ease;
+    cursor: pointer;
+}
+
+@media(max-width: 990px) {
+    .container {
+        width: calc(100vw - 35vw);
+        max-width: 100%;
+    }
+}
